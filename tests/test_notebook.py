@@ -21,5 +21,15 @@ class Notebook(unittest.TestCase):
         self.assertNotIn('ALLOW_UNVERIFIED', self.raw)
 
 
+
+class PublishNotebook(unittest.TestCase):
+    def test_token_never_printed_or_embedded(self):
+        raw = open(os.path.join(ROOT, 'tools', 'colab', 'publish_to_github.ipynb')).read()
+        json.loads(raw)
+        for bad in ('ghp_', 'github_pat_', 'print(os.environ', "print(os.environ['GH_TOKEN']", 'echo $GH_TOKEN', 'x-access-token'):
+            self.assertNotIn(bad, raw)
+        self.assertIn('getpass', raw); self.assertIn('userdata', raw); self.assertIn('--dry-run', raw)
+
+
 if __name__ == '__main__':
     unittest.main()

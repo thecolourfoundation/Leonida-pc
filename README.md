@@ -1,4 +1,4 @@
-# Leonida-PC-Research
+# Leonida-PC
 
 Research workspace for the public goal **"Leonida PC"**: tracking, vetting and (later) integrating existing public Xbox-recompilation research toward a legitimate GTA VI PC implementation.
 

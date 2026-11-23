@@ -3,7 +3,7 @@
 cd "$(dirname "$0")/.." || exit 1
 need=0
 chk(){ if command -v "$1" >/dev/null 2>&1; then printf '  [ok]      %-10s %s\n' "$1" "$("$1" --version 2>&1 | head -1)"; else printf '  [missing] %-10s %s\n' "$1" "$2"; [ "$3" = req ] && need=1; fi; }
-echo "== Leonida-PC-Research doctor =="; echo "OS: $(uname -srm)"; echo "Disk free here: $(df -h . | awk 'NR==2{print $4}')  (Leonida documents ~30 GB staged / ~350 GB full build)"
+echo "== Leonida-PC doctor =="; echo "OS: $(uname -srm)"; echo "Disk free here: $(df -h . | awk 'NR==2{print $4}')  (Leonida documents ~30 GB staged / ~350 GB full build)"
 echo "Required for this repo's tooling:"; chk git "install git" req; chk python3 "install Python 3" req; chk make "install make" req
 echo "Needed only for upstream builds (as documented by Leonida; not yet verified by us):"
 chk dotnet ".NET 8 SDK" opt; chk cmake "CMake" opt; chk clang "LLVM/clang 21+ with AMDGPU target" opt; chk vulkaninfo "Vulkan SDK/tools" opt
