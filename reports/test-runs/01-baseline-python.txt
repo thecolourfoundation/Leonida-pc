@@ -1,0 +1,69 @@
+$ python3 -m unittest discover -s tests -v
+/home/claude/Leonida-PC-Research/scripts/licence-compat.py:7: ResourceWarning: unclosed file <_io.TextIOWrapper name='reports/licence-matrix.csv' mode='r' encoding='utf-8'>
+  allrows = list(csv.DictReader(open('reports/licence-matrix.csv')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_aligned_pairs_that_must_never_be_ok (test_licence_compat.LicenceCompat.test_aligned_pairs_that_must_never_be_ok) ... ERROR
+test_dual_licence_text_points_to_mit_option_for_gpl2only (test_licence_compat.LicenceCompat.test_dual_licence_text_points_to_mit_option_for_gpl2only) ... ok
+test_import_has_no_side_effects (test_licence_compat.LicenceCompat.test_import_has_no_side_effects) ... FAIL
+test_main_output_matches_committed_report_and_docs (test_licence_compat.LicenceCompat.test_main_output_matches_committed_report_and_docs) ... ERROR
+test_manifest_and_licence_data_agree (test_licence_compat.LicenceCompat.test_manifest_and_licence_data_agree) ... /home/claude/Leonida-PC-Research/tests/test_licence_compat.py:63: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/Leonida-PC-Research/scripts/repos.txt' mode='r' encoding='utf-8'>
+  for line in open(os.path.join(ROOT, 'scripts', 'repos.txt')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/Leonida-PC-Research/tests/test_licence_compat.py:68: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/Leonida-PC-Research/reports/licence-matrix.csv' mode='r' encoding='utf-8'>
+  rows = {r['repo']: r['spdx_reported'] for r in csv.DictReader(open(os.path.join(ROOT, 'reports', 'licence-matrix.csv')))}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_public_api (test_licence_compat.LicenceCompat.test_public_api) ... FAIL
+test_symmetry (test_licence_compat.LicenceCompat.test_symmetry) ... ok
+test_verdict_table (test_licence_compat.LicenceCompat.test_verdict_table) ... ok
+test_only_stdlib_imports (test_stdlib_only.StdlibOnly.test_only_stdlib_imports) ... /home/claude/Leonida-PC-Research/tests/test_stdlib_only.py:19: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/Leonida-PC-Research/scripts/licence-compat.py' mode='r' encoding='utf-8'>
+  tree = ast.parse(open(path).read(), path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/Leonida-PC-Research/tests/test_stdlib_only.py:19: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/Leonida-PC-Research/tests/test_stdlib_only.py' mode='r' encoding='utf-8'>
+  tree = ast.parse(open(path).read(), path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/Leonida-PC-Research/tests/test_stdlib_only.py:19: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/Leonida-PC-Research/tests/test_licence_compat.py' mode='r' encoding='utf-8'>
+  tree = ast.parse(open(path).read(), path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+======================================================================
+ERROR: test_aligned_pairs_that_must_never_be_ok (test_licence_compat.LicenceCompat.test_aligned_pairs_that_must_never_be_ok)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/Leonida-PC-Research/tests/test_licence_compat.py", line 80, in test_aligned_pairs_that_must_never_be_ok
+    rows = {r['repo']: r['spdx_reported'] for r in self.m.load_rows()[0]}
+                                                   ^^^^^^^^^^^^^^^^
+AttributeError: module 'licence_compat' has no attribute 'load_rows'
+
+======================================================================
+ERROR: test_main_output_matches_committed_report_and_docs (test_licence_compat.LicenceCompat.test_main_output_matches_committed_report_and_docs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/Leonida-PC-Research/tests/test_licence_compat.py", line 92, in test_main_output_matches_committed_report_and_docs
+    rc = self.m.main()
+         ^^^^^^^^^^^
+AttributeError: module 'licence_compat' has no attribute 'main'
+
+======================================================================
+FAIL: test_import_has_no_side_effects (test_licence_compat.LicenceCompat.test_import_has_no_side_effects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/Leonida-PC-Research/tests/test_licence_compat.py", line 27, in test_import_has_no_side_effects
+    self.assertEqual(self.import_output, '')
+AssertionError: 'Reported licences (file text NOT yet veri[2771 chars]ct\n' != ''
+Diff is 2853 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_public_api (test_licence_compat.LicenceCompat.test_public_api)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/Leonida-PC-Research/tests/test_licence_compat.py", line 31, in test_public_api
+    self.assertTrue(hasattr(self.m, name), name)
+AssertionError: False is not true : main
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.011s
+
+FAILED (failures=2, errors=2)
+exit: 1
