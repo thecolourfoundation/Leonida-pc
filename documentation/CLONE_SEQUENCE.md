@@ -27,3 +27,7 @@ Build each approved repo independently, in order 2, 4, 5, then others. Use `scri
 - Build host: ~350 GB free for the full Leonida build; begin with the ~30 GB staged builds. Toolchains: see BUILD_GUIDE.md.
 - Keep AnyPS5 in its own build tree/artifacts (GPL-2.0-only isolation).
 - Directory-listed repos: remote verification first, then clone per the order table.
+
+## Update 2026-11-23 (relay 3): revised order
+1 awesome-list; 2 Leonida; 3 ProjectReCity (inspect gitlinks, e.g. rpf9-explorer, **without** initialising submodules); 4 Xbox2Windows; 5 OpenScarlett; 6 xbox-emulator (+ TomBox/"rage9" provenance); 7 AnyPS5 (own tree); 8 asset tools: rpf9, rpf9-extract, rpf9-explorer (at ReCity's pinned SHA), SixNG, bcpack-rs; 9 Percy6Stars last: read its LICENSE via a no-checkout/partial clone (`--filter=blob:none --no-checkout`) or the repo page; **link-only**, never built into anything.
+Run `submodule-provenance.sh` and `list-vendored.sh` after each clone. Rust/NuGet/pip fetches happen at build time: build only in the isolated VM with lockfiles reviewed.

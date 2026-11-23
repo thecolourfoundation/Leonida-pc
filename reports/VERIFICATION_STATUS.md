@@ -1,17 +1,22 @@
 # Verification status (updated 2026-11-23)
 
-**Provenance.** All facts below reached this workspace second-hand: (1) first relay: the user's research team verified five repo pages; (2) second relay: the user's own reading of upstream GitHub documentation. Both relayed 2026-11-23; neither source's own check date was supplied. The author (Claude) has no network access (github.com does not resolve; confirmed) and has verified **none** of it first-hand. No exact commit SHA is known for anything.
+**Provenance.** All facts reached this workspace second-hand, in three relays on 2026-11-23: (1) research team verified five repo pages; (2) the user's reading of upstream docs for licences/platforms/requirements; (3) the user's newer upstream documentation for eight further projects and updated README findings. Neither source's own check date was supplied. The author (Claude) has no network access (github.com does not resolve; re-confirmed this session) and verified **none** of it first-hand. No exact commit SHA is known for anything.
 
 ## Remotely documented (second-hand)
-| Repo | Licence | Platforms | Requirements | Status | Source |
-|---|---|---|---|---|---|
-| Leonida | GPL-3.0-or-later | Win tools+runtime; Linux translator/asset tools/GPU tests native + Wine/Proton runtime; macOS Apple Silicon Python+Vulkan test tools | Python 3.12+, .NET 8 SDK, Vulkan SDK, LLVM 21+ w/ AMDGPU, VS2022 + Windows SDK, ~350 GB full / ~30 GB staged | Game does not boot | https://github.com/ItsNotRexed/Leonida |
-| ProjectReCity | GPL-3.0-or-later | Windows + Vulkan | not supplied | Game does not boot; shader/asset/runtime/GPU research; Xbox D3D12-to-Vulkan incomplete; derived from Leonida | https://github.com/pixl27/ProjectReCity |
-| Xbox2Windows | MIT | x64 Windows | VS C++ workload, CMake, Ninja, Windows SDK 10.0.26100, Python 3.11+ | Fixtures + selected shader experiments; full GTA VI startup unverified | https://github.com/R0Y00/Xbox2Windows |
-| AnyPS5 | GPL-2.0-only (licence source not specified) | Linux/Windows relinker; macOS relinker-only incl. Apple Silicon | x86-64, CMake 3.22.1+ (3.24+ macOS), Ninja, C++20, GCC/G++ or MinGW-w64 | not supplied | https://github.com/boykopovar/AnyPS5/blob/main/docs/dev/BUILD.md |
-| awesome-gta6-reverse-engineering | n/a | n/a | n/a | curated list | https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering |
+Core four, licences, platforms and requirements: see INVENTORY.md section A (sources: https://github.com/ItsNotRexed/Leonida, https://github.com/pixl27/ProjectReCity, https://github.com/R0Y00/Xbox2Windows, https://github.com/boykopovar/AnyPS5/blob/main/docs/dev/BUILD.md).
 
-Directory-listed names (per user; I could not open the page; claims unverified): omonkeyz/xbox-emulator, californiaAlmonds/OpenScarlett, Freminet/ScarlettX, breadbbbb/rpf9-explorer, holdmysocks/SixNG, Ahmet-Dedeler/Percy6Stars, zeozeozeo/rpf9, Ahmet-Dedeler/bcpack-rs.
+New in relay 3:
+- ReCity README: documents AMD, NVIDIA, Intel Vulkan GPU compatibility; AMD native wave64, NVIDIA/Intel wave64 emulation. Documented, not tested by us.
+- Xbox2Windows: documents specific GPU hardware testing, CPU recompilation experiments, shader reference comparisons. Full GTA VI startup unverified.
+- OpenScarlett (MIT, C++20, Xbox Series compat/translation layer): https://github.com/californiaAlmonds/OpenScarlett
+- xbox-emulator (MIT OR Apache-2.0, Rust, based on TomBox and rage9): https://github.com/omonkeyz/xbox-emulator
+- SixNG (GPL-3.0, RPF9 extraction CLI+GUI, documents BCPack decoding limitations): https://github.com/holdmysocks/SixNG
+- Percy6Stars (non-commercial attribution + copyleft, keep isolated): https://github.com/Ahmet-Dedeler/Percy6Stars
+- rpf9-explorer (submodule of ReCity; licence/provenance unknown): https://github.com/breadbbbb/rpf9-explorer
+- bcpack-rs (MIT OR Apache-2.0): https://github.com/Ahmet-Dedeler/bcpack-rs
+- rpf9-extract (described as clean-room extraction): https://github.com/offs/rpf9-extract
+- rpf9 (described as Rust RPF9 library): https://github.com/zeozeozeo/rpf9
+Not supplied for these: SHAs, LICENSE text, third-party notices, platforms, requirements, build status, SixNG's actual BCPack limitations, Percy6Stars' purpose and exact terms.
 
 ## Unverified locally (everything)
-No clone, build, scan or test was run. No LICENSE text read, no SHA/date/release/owner recorded, no dependency list read from the repos themselves (the lists above are what the user reported), no platform claim reproduced, no statement about any directory-listed repo. No claim that GTA VI boots, runs or is playable (upstreams themselves say it does not boot).
+No clone, build, scan or test run; no LICENSE or third-party notice read; no SHA/date/release/owner recorded; no submodule or dependency list read from any repo; no platform or GPU claim reproduced; no code copied. The three new helper scripts were tested only against empty/synthetic inputs. No claim that GTA VI boots, runs or is playable (Leonida and ReCity say it does not boot).

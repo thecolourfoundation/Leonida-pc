@@ -1,6 +1,7 @@
 # name|url|category|status
 # REMOTE-VERIFIED-BY-TEAM = repo page/docs inspected remotely by the user or the user's research team (relayed 2026-11-23); NOT cloned/built/tested locally.
-# DIRECTORY-LISTED        = named as listed in awesome-gta6-reverse-engineering (per user); directory claims are NOT verified build results.
+# DIRECTORY-LISTED        = named as listed in awesome-gta6-reverse-engineering, or only a relationship was reported; no docs/licence facts supplied.
+# RESTRICTED-LICENCE      = restricted/non-commercial/custom licence: LINK-ONLY. add-upstreams.sh refuses it unless ALLOW_RESTRICTED=1 (only after its LICENSE is read).
 # UNVERIFIED              = on the assignment list only. add-upstreams.sh refuses anything but REMOTE-VERIFIED-BY-TEAM unless ALLOW_UNVERIFIED=1.
 # categories: gta6-re | gta6-recomp | xbox-recomp | ps5-portability | gta6-assets | directory | xbox-emu
 Leonida|https://github.com/ItsNotRexed/Leonida|gta6-re|REMOTE-VERIFIED-BY-TEAM
@@ -8,15 +9,14 @@ ProjectReCity|https://github.com/pixl27/ProjectReCity|gta6-re|REMOTE-VERIFIED-BY
 Xbox2Windows|https://github.com/R0Y00/Xbox2Windows|xbox-recomp|REMOTE-VERIFIED-BY-TEAM
 AnyPS5|https://github.com/boykopovar/AnyPS5|ps5-portability|REMOTE-VERIFIED-BY-TEAM
 awesome-gta6-reverse-engineering|https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering|directory|REMOTE-VERIFIED-BY-TEAM
-xbox-emulator|https://github.com/omonkeyz/xbox-emulator|xbox-emu|DIRECTORY-LISTED
-OpenScarlett|https://github.com/californiaAlmonds/OpenScarlett|xbox-emu|DIRECTORY-LISTED
-ScarlettX|https://github.com/Freminet/ScarlettX|xbox-emu|DIRECTORY-LISTED
-SixNG|https://github.com/holdmysocks/SixNG|gta6-re|DIRECTORY-LISTED
-Percy6Stars|https://github.com/Ahmet-Dedeler/Percy6Stars|gta6-re|DIRECTORY-LISTED
-rpf9|https://github.com/zeozeozeo/rpf9|gta6-assets|DIRECTORY-LISTED
+OpenScarlett|https://github.com/californiaAlmonds/OpenScarlett|xbox-emu|REMOTE-VERIFIED-BY-TEAM
+xbox-emulator|https://github.com/omonkeyz/xbox-emulator|xbox-emu|REMOTE-VERIFIED-BY-TEAM
+SixNG|https://github.com/holdmysocks/SixNG|gta6-assets|REMOTE-VERIFIED-BY-TEAM
+bcpack-rs|https://github.com/Ahmet-Dedeler/bcpack-rs|gta6-assets|REMOTE-VERIFIED-BY-TEAM
+Percy6Stars|https://github.com/Ahmet-Dedeler/Percy6Stars|gta6-re|RESTRICTED-LICENCE
 rpf9-explorer|https://github.com/breadbbbb/rpf9-explorer|gta6-assets|DIRECTORY-LISTED
-bcpack-rs|https://github.com/Ahmet-Dedeler/bcpack-rs|gta6-assets|DIRECTORY-LISTED
+rpf9|https://github.com/zeozeozeo/rpf9|gta6-assets|DIRECTORY-LISTED
+rpf9-extract|https://github.com/offs/rpf9-extract|gta6-assets|UNVERIFIED
 GTAVI-Recomp|https://github.com/JamesCicada/GTAVI-Recomp|gta6-recomp|UNVERIFIED
 PercyStar|https://github.com/rpatty-dev/PercyStar|gta6-re|UNVERIFIED
-rpf9-extract|https://github.com/offs/rpf9-extract|gta6-assets|UNVERIFIED
 GTA6-Asset-Info|https://github.com/TrinitronClient/GTA6-Asset-Info|gta6-assets|UNVERIFIED

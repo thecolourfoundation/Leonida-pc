@@ -8,6 +8,7 @@ want=" $* "
 grep -v '^#' scripts/repos.txt | while IFS='|' read -r n u c st; do
   [ -n "$n" ] || continue
   [ "$#" -eq 0 ] || [[ "$want" == *" $n "* ]] || continue
+  if [ "$st" = "RESTRICTED-LICENCE" ] && [ "${ALLOW_RESTRICTED:-0}" != "1" ]; then echo "skip $n (restricted licence: LINK-ONLY; ALLOW_RESTRICTED=1 only after reading its LICENSE)"; continue; fi
   if [ "$st" != "REMOTE-VERIFIED-BY-TEAM" ] && [ "${ALLOW_UNVERIFIED:-0}" != "1" ]; then echo "skip $n ($st; set ALLOW_UNVERIFIED=1 to override)"; continue; fi
   [ -e "upstream/$n" ] && { echo "skip $n (exists)"; continue; }
   echo "adding $n"; git submodule add "$u" "upstream/$n" || echo "FAILED $n" >&2

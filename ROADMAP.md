@@ -7,3 +7,6 @@ Phase A ordering is now defined in documentation/CLONE_SEQUENCE.md. PS5 portabil
 
 ## Update 2026-11-23
 Add a licence-resolution step before integration: verify LICENSE texts, enumerate vendored deps, decide the workspace's own licence, and keep AnyPS5 isolated. See VERIFICATION_CHECKLIST.md.
+
+## Update 2026-11-23 (relay 3)
+Phase A now covers 13 projects (see CLONE_SEQUENCE.md). Add comparison tracks: Xbox translation layers, BCPack/texture decoding, GPU evidence upgrade (E1 to E2/E3), restricted-licence handling, submodule provenance. No code is copied until licences and provenance are verified.

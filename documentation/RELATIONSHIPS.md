@@ -28,3 +28,10 @@ Basis: facts reported by the research team (see reports/VERIFICATION_STATUS.md).
 - Xbox2Windows (MIT): separate lineage; one-way compatible with GPL; keep separate with its own notice.
 - AnyPS5 (GPL-2.0-only): **licence-isolated** from the GPL-3 lineage; no shared code, linking or combined artifacts.
 - Directory-listed repos (xbox-emu, SixNG, Percy6Stars, rpf9, rpf9-explorer, bcpack-rs): relationships unknown.
+
+## Update 2026-11-23 (relay 3)
+- ReCity uses rpf9-explorer as a submodule (independent project; licence unknown).
+- xbox-emulator is "based on" TomBox and rage9 (relationship type unknown).
+- SixNG and bcpack-rs: research relationship only; dependency status unknown.
+- OpenScarlett and xbox-emulator: separate Xbox compatibility efforts, to compare with Leonida and Xbox2Windows.
+- Percy6Stars: licence-isolated from everything. AnyPS5 stays isolated from GPL-3 projects (now also SixNG). Details: documentation/PROVENANCE.md, LICENSES.md.

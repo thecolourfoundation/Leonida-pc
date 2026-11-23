@@ -3,3 +3,11 @@ Leonida,GPL-3.0-or-later,https://github.com/ItsNotRexed/Leonida
 ProjectReCity,GPL-3.0-or-later,https://github.com/pixl27/ProjectReCity
 Xbox2Windows,MIT,https://github.com/R0Y00/Xbox2Windows
 AnyPS5,GPL-2.0-only,reported by user (licence source page not specified; platform/requirement source is docs/dev/BUILD.md)
+OpenScarlett,MIT,reported by user from upstream docs (relayed 2026-11-23): https://github.com/californiaAlmonds/OpenScarlett
+xbox-emulator,MIT OR Apache-2.0,reported by user from upstream docs (relayed 2026-11-23): https://github.com/omonkeyz/xbox-emulator
+SixNG,GPL-3.0,reported as GPL-3.0 (-only vs -or-later unspecified; check headers): https://github.com/holdmysocks/SixNG
+bcpack-rs,MIT OR Apache-2.0,reported by user from upstream docs (relayed 2026-11-23): https://github.com/Ahmet-Dedeler/bcpack-rs
+Percy6Stars,CUSTOM-NONCOMMERCIAL,reported as non-commercial attribution + copyleft (custom; exact text unread): https://github.com/Ahmet-Dedeler/Percy6Stars
+rpf9-explorer,UNKNOWN,no licence reported; used as submodule by ReCity
+rpf9,UNKNOWN,no licence reported
+rpf9-extract,UNKNOWN,no licence reported

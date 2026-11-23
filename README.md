@@ -10,3 +10,6 @@ Five repos are reported remotely verified by the user's research team (second-ha
 
 ## Update 2026-11-23
 Licences, platform claims and requirements for Leonida, ProjectReCity, Xbox2Windows and AnyPS5 are recorded as remotely inspected documentation (second-hand; nothing cloned/built/tested here). Neither Leonida nor ReCity boots the game. Start with VERIFICATION_CHECKLIST.md, LICENSES.md, COMPATIBILITY.md, INVENTORY.md.
+
+## Update 2026-11-23 (relay 3)
+Added OpenScarlett, xbox-emulator, SixNG, bcpack-rs, rpf9-explorer, rpf9, rpf9-extract and Percy6Stars (link-only, non-commercial) as remotely documented, unverified projects. New docs: documentation/XBOX_TRANSLATION_COMPARISON.md, BCPACK_TEXTURE_RESEARCH.md, GPU_COMPATIBILITY_EVIDENCE.md, RESTRICTED_LICENCES.md, PROVENANCE.md. Still nothing cloned, built or tested locally; no code copied.

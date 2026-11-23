@@ -8,3 +8,6 @@ Lineages are tracked separately: (A) Leonida→ReCity, (B) Xbox2Windows, (C) Any
 
 ## Update 2026-11-23: documented components (relayed; code not read)
 Leonida: translator, asset tools, GPU/Vulkan tests, Windows runtime. ReCity: reports shader, asset, runtime and GPU research; Xbox D3D12-to-Vulkan incomplete. Xbox2Windows: source-built executable fixtures, selected shader experiments. AnyPS5: PS5 relinker (separate track). Mapping to the 12 capability areas is pending code reading; no component is a verified implementation.
+
+## Update 2026-11-23 (relay 3)
+Added Xbox translation-layer candidates (OpenScarlett, xbox-emulator), RPF9/BCPack asset tooling (SixNG, rpf9, rpf9-extract, rpf9-explorer, bcpack-rs) and a restricted project (Percy6Stars). See documentation/XBOX_TRANSLATION_COMPARISON.md and BCPACK_TEXTURE_RESEARCH.md. Mapping to the 12 capability areas still awaits code reading.

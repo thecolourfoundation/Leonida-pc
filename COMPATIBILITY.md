@@ -1,12 +1,17 @@
 # Compatibility matrix
-**Documented support only. Nothing has been built or tested here.** "Documented" = an upstream page says so (relayed 2026-11-23); it is not evidence the thing works. Values: DOCUMENTED / NOT DOCUMENTED / NOT STATED / UNTESTED. GPU vendor support is NOT STATED anywhere in the supplied information: do not infer it (Leonida's "LLVM with AMDGPU target" is a toolchain requirement, not a vendor-support claim).
+**Documented support only. Nothing has been built or tested here.** DOCUMENTED = an upstream page says so (relayed 2026-11-23), not evidence it works. GPU grades E0-E3 are defined in documentation/GPU_COMPATIBILITY_EVIDENCE.md; no E3 exists.
 
 | Component | Windows | Linux | macOS | CPU arch | AMD / NVIDIA / Intel | Boots / end-to-end |
 |---|---|---|---|---|---|---|
-| Leonida: tools + Windows runtime | DOCUMENTED (runtime builds need VS2022 + Windows SDK) | Tools natively DOCUMENTED; Windows runtime via Wine/Proton DOCUMENTED | Apple Silicon: Python + Vulkan test tools DOCUMENTED; runtime via "compatibility arrangements" (unspecified) | x86-64 NOT STATED; ARM64 only for macOS test tools | NOT STATED | **No: game does not boot** |
-| Leonida: translator, asset tools, GPU tests | tools DOCUMENTED | DOCUMENTED natively | test tools only (Apple Silicon) | as above | NOT STATED | n/a |
-| ProjectReCity | DOCUMENTED target (with Vulkan) | NOT DOCUMENTED | NOT DOCUMENTED | NOT STATED | NOT STATED (GPU research reported) | **No: game does not boot**; Xbox D3D12-to-Vulkan incomplete |
-| Xbox2Windows | DOCUMENTED target (x64) | NOT DOCUMENTED | NOT DOCUMENTED | x64 DOCUMENTED; ARM64 NOT DOCUMENTED | NOT STATED | Source-built fixtures + selected shader experiments; full GTA VI startup **unverified** |
-| AnyPS5 relinker (PS5 research; not GTA VI) | DOCUMENTED (MinGW-w64 GCC) | DOCUMENTED (GCC/G++) | DOCUMENTED, relinker-only build incl. Apple Silicon | x86-64 required; native-ARM64 vs Rosetta on Apple Silicon **ambiguous: verify** | NOT STATED | N/A |
+| Leonida (tools + Windows runtime) | DOCUMENTED (runtime builds need VS2022 + Windows SDK) | tools native; Windows runtime via Wine/Proton | Apple Silicon: Python + Vulkan test tools; runtime via unspecified "compatibility arrangements" | x86-64 NOT STATED; ARM64 only macOS test tools | NOT STATED (E0) | No (documented) |
+| Leonida (translator, asset tools, GPU tests) | tools | native | test tools only | as above | NOT STATED | n/a |
+| ProjectReCity | DOCUMENTED target (+ Vulkan) | NOT DOCUMENTED | NOT DOCUMENTED | NOT STATED | DOCUMENTED, E1: AMD native wave64; NVIDIA + Intel wave64 emulation | No; Xbox D3D12-to-Vulkan incomplete |
+| Xbox2Windows | DOCUMENTED target (x64) | NOT DOCUMENTED | NOT DOCUMENTED | x64 documented; ARM64 not | specific GPU hardware testing documented, E1 (hardware list not supplied) | Fixtures + CPU recompilation experiments + shader reference comparisons; full GTA VI startup unverified |
+| OpenScarlett (C++20, MIT) | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED |
+| xbox-emulator (Rust, MIT OR Apache-2.0) | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED |
+| SixNG (RPF9 extraction, CLI + GUI) | "cross-platform" claim; OS list NOT SUPPLIED | same | same | NOT SUPPLIED | n/a | BCPack decoding limitations documented upstream |
+| bcpack-rs / rpf9 / rpf9-explorer / rpf9-extract | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | NOT SUPPLIED | n/a | n/a |
+| Percy6Stars | NOT SUPPLIED (link-only) | | | | | |
+| AnyPS5 relinker (PS5 research; not GTA VI) | DOCUMENTED (MinGW-w64 GCC) | DOCUMENTED (GCC/G++) | DOCUMENTED, relinker-only incl. Apple Silicon | x86-64 required; Apple Silicon native vs Rosetta unclear | n/a (E0) | N/A |
 
-Rules: Leonida and ReCity are one lineage (not mutual corroboration). AnyPS5 does not contribute to Xbox/GTA VI rows. 350 GB (full Leonida build) / ~30 GB (selected stages) disk is documented; see BUILD_GUIDE.md. Directory-listed repos: no compatibility data.
+Rules: Leonida and ReCity are one lineage. AnyPS5 does not contribute to the Xbox/GTA VI rows. Disk: ~350 GB full Leonida build / ~30 GB staged. Neither Leonida nor ReCity boots the game; nothing here supports a playability claim.

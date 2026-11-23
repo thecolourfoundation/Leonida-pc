@@ -1,51 +1,89 @@
 # Licence register
-Licences below are **reported** (relayed by the user 2026-11-23 from upstream GitHub documentation). LICENSE file text, per-file SPDX headers, exceptions and vendored third-party licences have **not** been read here. Not legal advice. Triage tool: `python3 scripts/licence-compat.py`.
+Licences are **reported** (relayed by the user 2026-11-23 from upstream documentation). LICENSE texts, per-file headers, exceptions, third-party notices and vendored licences are **unread**. Not legal advice. Regenerate with `python3 scripts/licence-compat.py` (data: reports/licence-matrix.csv).
 
-## A. Matrix (reported)
-| Repo | SPDX (reported) | Copyleft | Role in workspace |
+## A. Reported licences
+| Repo | Licence (reported) | Copyleft | Handling |
 |---|---|---|---|
-| Leonida | GPL-3.0-or-later | strong | upstream submodule |
-| ProjectReCity | GPL-3.0-or-later | strong | upstream submodule; derived from Leonida; keep attribution |
-| Xbox2Windows | MIT | none | upstream submodule; keep separate, preserve MIT notice |
-| AnyPS5 | GPL-2.0-only | strong | upstream submodule; **isolated** |
-| directory + 8 listed repos + 4 other assignment repos | UNKNOWN | ? | link-only until read |
+| Leonida | GPL-3.0-or-later | strong | upstream |
+| ProjectReCity | GPL-3.0-or-later | strong | derived from Leonida; keep attribution |
+| SixNG | GPL-3.0 (-only vs -or-later unknown) | strong | upstream; check headers |
+| AnyPS5 | GPL-2.0-only | strong | **isolated** |
+| Xbox2Windows | MIT | none | keep separate, preserve notice |
+| OpenScarlett | MIT | none | keep separate |
+| xbox-emulator | MIT OR Apache-2.0 (dual) | none | check TomBox/rage9 provenance |
+| bcpack-rs | MIT OR Apache-2.0 (dual) | none | |
+| Percy6Stars | custom non-commercial + attribution + copyleft | restricted | **LINK-ONLY**, see documentation/RESTRICTED_LICENCES.md |
+| rpf9-explorer, rpf9, rpf9-extract | UNKNOWN | ? | link-only until read |
+| directory, GTAVI-Recomp, PercyStar, GTA6-Asset-Info | UNKNOWN | ? | link-only until read |
 
-## B. Pairwise combination (as one combined work)
-| Pair | Verdict |
-|---|---|
-| Leonida + ProjectReCity | OK: same licence; ReCity is a derivative, so Leonida's copyright notices/attribution must stay intact |
-| Leonida/ReCity + Xbox2Windows | OK one-way: MIT code can sit inside a GPL-3 work (combined work is GPL-3, MIT notice kept). Still keep separate |
-| Leonida/ReCity + AnyPS5 | **INCOMPATIBLE** as one combined work. GPL-2.0-only cannot be combined with GPL-3.x code, and "or-later" on Leonida/ReCity does not fix that |
-| Xbox2Windows + AnyPS5 | OK one-way into GPL-2.0-only; keep separate |
+## B. Pairwise combination as one combined work (generated)
+```
+Reported licences (file text NOT yet verified):
+  Leonida: GPL-3.0-or-later
+  ProjectReCity: GPL-3.0-or-later
+  Xbox2Windows: MIT
+  AnyPS5: GPL-2.0-only
+  OpenScarlett: MIT
+  xbox-emulator: MIT OR Apache-2.0
+  SixNG: GPL-3.0 (ambiguous: confirm -only vs -or-later)
+  bcpack-rs: MIT OR Apache-2.0
+  Percy6Stars: CUSTOM-NONCOMMERCIAL
+  UNKNOWN (no licence reported): rpf9-explorer, rpf9, rpf9-extract
+
+Matrix (OK / ONEWAY / X / ISO / ?):
+              Leonid Projec Xbox2W AnyPS5 OpenSc xbox-e SixNG  bcpack Percy6
+Leonida       -      OK     ONEWAY X      ONEWAY ONEWAY OK     ONEWAY ISO   
+ProjectReCity OK     -      ONEWAY X      ONEWAY ONEWAY OK     ONEWAY ISO   
+Xbox2Windows  ONEWAY ONEWAY -      ONEWAY OK     OK     ONEWAY OK     ISO   
+AnyPS5        X      X      ONEWAY -      ONEWAY ONEWAY X      ONEWAY ISO   
+OpenScarlett  ONEWAY ONEWAY OK     ONEWAY -      OK     ONEWAY OK     ISO   
+xbox-emulator ONEWAY ONEWAY OK     ONEWAY OK     -      ONEWAY OK     ISO   
+SixNG         OK     OK     ONEWAY X      ONEWAY ONEWAY -      ONEWAY ISO   
+bcpack-rs     ONEWAY ONEWAY OK     ONEWAY OK     OK     ONEWAY -      ISO   
+Percy6Stars   ISO    ISO    ISO    ISO    ISO    ISO    ISO    ISO    -     
+
+Problem pairs (X / ISO):
+  AnyPS5 + Leonida: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  Leonida + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  AnyPS5 + ProjectReCity: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  Percy6Stars + ProjectReCity: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + Xbox2Windows: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  AnyPS5 + SixNG: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  AnyPS5 + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  OpenScarlett + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + xbox-emulator: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + SixNG: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + bcpack-rs: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+```
+Reading it: **X** = GPL-2.0-only (AnyPS5) can never be merged with the GPL-3 projects (Leonida, ReCity, SixNG). **ONEWAY** = permissive code may enter a GPL work, which then follows the GPL (xbox-emulator: choose the MIT option for GPL-2.0-only). **ISO** = Percy6Stars is isolated from everything. Permissive projects remain separately identifiable and keep their notices.
 
 ## C. Policy
-1. Never merge, link or copy code between AnyPS5 and Leonida/ReCity. Separate repos, builds and release artifacts; if they ever interact, only as separate programs (CLI/files), and only after legal review.
-2. Workspace commits contain submodule pointers and our own docs/scripts only, never vendored upstream code. Nothing here is a combined distribution.
-3. MIT components keep their own LICENSE and notice, preserved separately.
-4. ReCity: preserve its relationship to Leonida and all inherited notices; confirm fork parent and history from git.
-5. "or-later" is a per-file claim: verify SPDX headers/LICENSE text before relying on it.
-6. Choose a licence for workspace-authored files (open decision; see VERIFICATION_CHECKLIST.md).
+1. Never merge, link or copy code between AnyPS5 and the GPL-3 projects. Separate repos/builds/artifacts; any interaction only as separate programs, after legal review.
+2. Percy6Stars: link-only; never in a commercial distribution without written permission; no code reuse.
+3. Workspace commits hold submodule pointers and our own docs/scripts only. No vendored upstream code, no combined distribution. **No code has been copied.**
+4. Preserve upstream identities, licence files and notices; ReCity's derivation from Leonida stays documented.
+5. "or-later", "GPL-3.0" and dual-licence claims are per-file/per-repo: verify LICENSE text and SPDX headers.
+6. A submodule embedded by an upstream (ReCity -> rpf9-explorer) carries its own licence at its pinned commit.
+7. Choose a licence for workspace-authored files (open decision).
 
-## D. Documented dependencies and their licences
-Licences in this table are **general knowledge, not read from the upstream repos: UNVERIFIED**. These are build/runtime tools the workspace does not redistribute. Libraries vendored or fetched *inside* each repo are **unknown** (run `scripts/list-vendored.sh` after cloning).
+## D. Documented dependencies and licences
+Licences below are **general knowledge, not read from the repos: UNVERIFIED**; these are tools the workspace does not redistribute. Crates, NuGet/pip packages and vendored libraries inside each repo are **unknown** until `scripts/list-vendored.sh` and `scripts/submodule-provenance.sh` run (see documentation/PROVENANCE.md).
 | Dependency | Needed by (documented) | Typical licence (unverified) |
 |---|---|---|
-| Python 3.12+ / 3.11+ | Leonida / Xbox2Windows fixture tests | PSF-2.0 |
-| .NET 8 SDK | Leonida | MIT (plus bundled third-party notices) |
-| Vulkan SDK | Leonida | LunarG SDK bundle; components under several mostly permissive licences (e.g. Apache-2.0); check SDK notices |
-| LLVM 21+ (AMDGPU target) | Leonida | Apache-2.0 with LLVM exception |
-| Visual Studio 2022 / Windows SDK (10.0.26100 for Xbox2Windows) | Leonida runtime; Xbox2Windows | Proprietary Microsoft terms; not redistributable |
-| CMake | Xbox2Windows; AnyPS5 (3.22.1+, 3.24+ macOS) | BSD-3-Clause |
-| Ninja | Xbox2Windows; AnyPS5 | Apache-2.0 |
-| GCC/G++ | AnyPS5 (Linux) | GPL-3.0-or-later with GCC Runtime Library Exception |
-| MinGW-w64 GCC | AnyPS5 (Windows) | Mixed (runtime largely permissive e.g. ZPL/public domain; compiler as GCC) |
-| Wine / Proton | Leonida Windows runtime on Linux | Wine LGPL-2.1-or-later; Proton bundles components under various licences |
-| macOS compiler/toolchain | AnyPS5 macOS | Not specified in supplied info |
+| Python 3.12+ / 3.11+ | Leonida / Xbox2Windows tests | PSF-2.0 |
+| .NET 8 SDK | Leonida | MIT (+ third-party notices) |
+| Vulkan SDK | Leonida | LunarG bundle; mostly permissive components (e.g. Apache-2.0); check notices |
+| LLVM 21+ (AMDGPU) | Leonida | Apache-2.0 with LLVM exception |
+| Visual Studio 2022 / Windows SDK | Leonida runtime; Xbox2Windows | Proprietary Microsoft terms; not redistributable |
+| CMake / Ninja | Xbox2Windows; AnyPS5 | BSD-3-Clause / Apache-2.0 |
+| GCC/G++ ; MinGW-w64 | AnyPS5 | GPL-3.0-or-later + runtime exception; MinGW-w64 mixed, runtime largely permissive |
+| Wine / Proton | Leonida runtime on Linux | Wine LGPL-2.1-or-later; Proton mixed |
+| Rust toolchain/crates | xbox-emulator, bcpack-rs, rpf9 (language per user; bcpack-rs unconfirmed) | Rust: MIT OR Apache-2.0; crate licences unknown |
+| TomBox, "rage9" | xbox-emulator ("based on") | UNKNOWN |
 
 ## E. Open licence concerns
-- LICENSE files and headers unread for all repos; AnyPS5's source for its licence claim unspecified.
-- Vendored/fetched third-party code in each upstream unknown (may carry other licences).
-- Toolchain runtimes (MSVC redistributables, GCC runtime) matter only if we ever ship binaries; we do not.
-- Non-licence legal exposure outranks licence compatibility: Xbox2Windows and AnyPS5 target console software; confirm no console keys, exploits, dumped firmware/binaries or DRM circumvention.
-- Any repo with game-derived content (assets, symbols from proprietary binaries, keys) is rejected or link-only; especially gta6-assets.
-- A repo with no LICENSE file is all-rights-reserved: link only.
+- All LICENSE files unread; AnyPS5's licence source unspecified; SixNG's GPL-3.0 variant unspecified.
+- xbox-emulator and ReCity embed or derive from other projects whose licences are unknown.
+- Percy6Stars exact terms unread.
+- Non-licence legal exposure outranks licence fit: Xbox2Windows, AnyPS5, OpenScarlett, xbox-emulator target console software; confirm no console keys, exploits, dumps or DRM circumvention. Asset tools (SixNG, rpf9*, bcpack-rs): confirm no game-derived data or keys, and that tests use synthetic data. "Clean-room" (rpf9-extract) is a claim to verify.
+- No LICENSE file = all rights reserved = link-only.

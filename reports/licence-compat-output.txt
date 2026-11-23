@@ -1,0 +1,36 @@
+Reported licences (file text NOT yet verified):
+  Leonida: GPL-3.0-or-later
+  ProjectReCity: GPL-3.0-or-later
+  Xbox2Windows: MIT
+  AnyPS5: GPL-2.0-only
+  OpenScarlett: MIT
+  xbox-emulator: MIT OR Apache-2.0
+  SixNG: GPL-3.0 (ambiguous: confirm -only vs -or-later)
+  bcpack-rs: MIT OR Apache-2.0
+  Percy6Stars: CUSTOM-NONCOMMERCIAL
+  UNKNOWN (no licence reported): rpf9-explorer, rpf9, rpf9-extract
+
+Matrix (OK / ONEWAY / X / ISO / ?):
+              Leonid Projec Xbox2W AnyPS5 OpenSc xbox-e SixNG  bcpack Percy6
+Leonida       -      OK     ONEWAY X      ONEWAY ONEWAY OK     ONEWAY ISO   
+ProjectReCity OK     -      ONEWAY X      ONEWAY ONEWAY OK     ONEWAY ISO   
+Xbox2Windows  ONEWAY ONEWAY -      ONEWAY OK     OK     ONEWAY OK     ISO   
+AnyPS5        X      X      ONEWAY -      ONEWAY ONEWAY X      ONEWAY ISO   
+OpenScarlett  ONEWAY ONEWAY OK     ONEWAY -      OK     ONEWAY OK     ISO   
+xbox-emulator ONEWAY ONEWAY OK     ONEWAY OK     -      ONEWAY OK     ISO   
+SixNG         OK     OK     ONEWAY X      ONEWAY ONEWAY -      ONEWAY ISO   
+bcpack-rs     ONEWAY ONEWAY OK     ONEWAY OK     OK     ONEWAY -      ISO   
+Percy6Stars   ISO    ISO    ISO    ISO    ISO    ISO    ISO    ISO    -     
+
+Problem pairs (X / ISO):
+  AnyPS5 + Leonida: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  Leonida + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  AnyPS5 + ProjectReCity: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  Percy6Stars + ProjectReCity: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + Xbox2Windows: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  AnyPS5 + SixNG: X: GPL-2.0-only cannot be combined with GPL-3.x ("or-later" on the other side does not help)
+  AnyPS5 + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  OpenScarlett + Percy6Stars: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + xbox-emulator: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + SixNG: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact
+  Percy6Stars + bcpack-rs: ISO: restricted/non-commercial terms add restrictions the other licence may not allow: keep isolated, no combined artifact

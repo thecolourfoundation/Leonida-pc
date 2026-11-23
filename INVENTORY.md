@@ -1,26 +1,28 @@
 # Inventory
-**Nothing here was cloned, built, scanned or tested locally.** Entries are remotely inspected documentation, relayed by the user on 2026-11-23 (see reports/VERIFICATION_STATUS.md). Latest commit SHAs, dates, releases and owners/maintainers are **not recorded**: retrieve with git when connectivity returns (reports/upstream-commits.tsv via scripts/record-commits.sh). Regenerate the manifest-driven table with `scripts/gen-inventory.sh`.
+**Nothing here was cloned, built, scanned or tested locally.** Entries are remotely inspected documentation relayed by the user on 2026-11-23 (reports/VERIFICATION_STATUS.md). Latest commit SHAs/dates/releases/owners are **not recorded**: get them with git later (`scripts/record-commits.sh`). Manifest-driven table: `scripts/gen-inventory.sh`.
 
-## A. Core upstreams (remote docs inspected)
-| Repo (URL) | Category | Licence (reported) | Targets / platforms (documented) | Documented requirements | Reported status |
+## A. Core upstreams
+| Repo (URL) | Category | Licence (reported) | Targets (documented) | Documented requirements | Reported status |
 |---|---|---|---|---|---|
-| Leonida https://github.com/ItsNotRexed/Leonida | gta6-re (root of lineage) | GPL-3.0-or-later | Windows: tools + runtime. Linux: translator, asset tools, GPU tests natively; Windows runtime via Wine/Proton. macOS Apple Silicon: Python + Vulkan test tools; Windows runtime via compatibility arrangements | Python 3.12+; .NET 8 SDK; Vulkan SDK; LLVM 21+ with AMDGPU target; Visual Studio 2022 + Windows SDK (Windows runtime builds); ~350 GB free for full build, ~30 GB for selected check/shader/runtime stages | **Game does not boot** |
-| ProjectReCity https://github.com/pixl27/ProjectReCity | gta6-re (derived from Leonida) | GPL-3.0-or-later | Windows with Vulkan | Not supplied | **Game does not boot.** README reports shader, asset, runtime and GPU research; Xbox D3D12-to-Vulkan incomplete |
-| Xbox2Windows https://github.com/R0Y00/Xbox2Windows | xbox-recomp | MIT | x64 Windows | Visual Studio C++ workload; CMake; Ninja; Windows SDK 10.0.26100; Python 3.11+ (full fixture tests) | Source-built executable fixtures and selected shader experiments; **full GTA VI startup unverified** |
-| AnyPS5 https://github.com/boykopovar/AnyPS5 (docs: .../blob/main/docs/dev/BUILD.md) | ps5-portability (separate; not an Xbox GTA VI implementation) | GPL-2.0-only | Linux and Windows relinker; macOS relinker-only build incl. Apple Silicon | x86-64; CMake 3.22.1+ (3.24+ on macOS); Ninja; C++20; GCC/G++ (Linux); MinGW-w64 GCC (Windows) | Not supplied |
-| awesome-gta6-reverse-engineering https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering | directory | Not supplied (list licence does not cover linked projects) | n/a | n/a | Curated list; claims are not build results |
+| Leonida https://github.com/ItsNotRexed/Leonida | gta6-re (lineage root) | GPL-3.0-or-later | Win tools+runtime; Linux translator/asset tools/GPU tests native + Wine/Proton runtime; macOS Apple Silicon Python+Vulkan test tools | Python 3.12+, .NET 8, Vulkan SDK, LLVM 21+ w/ AMDGPU, VS2022 + Windows SDK; ~350 GB full / ~30 GB staged | Game does not boot |
+| ProjectReCity https://github.com/pixl27/ProjectReCity | gta6-re (derived from Leonida) | GPL-3.0-or-later | Windows + Vulkan | not supplied | Does not boot; README documents AMD/NVIDIA/Intel Vulkan GPU compatibility (AMD native wave64; NVIDIA/Intel wave64 emulation); Xbox D3D12-to-Vulkan incomplete; uses rpf9-explorer as submodule |
+| Xbox2Windows https://github.com/R0Y00/Xbox2Windows | xbox-recomp | MIT | x64 Windows | VS C++ workload, CMake, Ninja, Windows SDK 10.0.26100, Python 3.11+ | Fixtures, CPU recompilation experiments, shader reference comparisons, specific GPU hardware testing documented; full GTA VI startup unverified |
+| AnyPS5 https://github.com/boykopovar/AnyPS5 | ps5-portability (separate) | GPL-2.0-only | Linux/Windows relinker; macOS relinker-only incl. Apple Silicon | x86-64, CMake 3.22.1+ (3.24+ macOS), Ninja, C++20, GCC / MinGW-w64 | not supplied |
+| awesome-gta6-reverse-engineering https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering | directory | not supplied | n/a | n/a | Curated list; claims are not build results |
 
-Canonical AnyPS5 = boykopovar/AnyPS5 only. Leonida and ReCity are one lineage, not independent implementations.
+## B. Newly documented projects (reported; unverified)
+| Repo | Category | Licence (reported) | Reported description | Handling |
+|---|---|---|---|---|
+| californiaAlmonds/OpenScarlett | xbox-emu | MIT | C++20; Xbox Series compatibility and translation layer | compare vs Leonida/Xbox2Windows |
+| omonkeyz/xbox-emulator | xbox-emu | MIT OR Apache-2.0 | Rust; Xbox Series compatibility, based on TomBox and rage9 | check provenance of TomBox/rage9 |
+| holdmysocks/SixNG | gta6-assets | GPL-3.0 (-only vs -or-later unspecified) | cross-platform RPF9 extraction, CLI + GUI; documents BCPack decoding limitations | BCPack research |
+| Ahmet-Dedeler/bcpack-rs | gta6-assets | MIT OR Apache-2.0 | research implementation and SixNG compatibility | BCPack research |
+| Ahmet-Dedeler/Percy6Stars | gta6-re | CUSTOM non-commercial + attribution + copyleft (text unread) | purpose not supplied | **LINK-ONLY, licence-isolated** |
+| breadbbbb/rpf9-explorer | gta6-assets | UNKNOWN | submodule of ReCity | inspect licence/provenance |
+| zeozeozeo/rpf9 | gta6-assets | UNKNOWN | Rust RPF9 library | inspect |
+| offs/rpf9-extract | gta6-assets | UNKNOWN | described as clean-room extraction | inspect claim; status UNVERIFIED |
 
-## B. Ecosystem listed in the directory (per user; **not independently verified; I could not open the directory page myself**)
-| Repo | Category | Status |
-|---|---|---|
-| omonkeyz/xbox-emulator | xbox-emu | DIRECTORY-LISTED |
-| californiaAlmonds/OpenScarlett | xbox-emu | DIRECTORY-LISTED |
-| Freminet/ScarlettX | xbox-emu | DIRECTORY-LISTED |
-| holdmysocks/SixNG | gta6-re | DIRECTORY-LISTED |
-| Ahmet-Dedeler/Percy6Stars | gta6-re | DIRECTORY-LISTED |
-| zeozeozeo/rpf9 | gta6-assets | DIRECTORY-LISTED |
-| breadbbbb/rpf9-explorer | gta6-assets | DIRECTORY-LISTED (new) |
-| Ahmet-Dedeler/bcpack-rs | gta6-assets (category tentative, from the name only) | DIRECTORY-LISTED (new) |
-Purpose, licence, platforms, activity and legality are all unknown for these. On the original assignment list but not named in the latest directory excerpt (so still UNVERIFIED, not "absent"): JamesCicada/GTAVI-Recomp, rpatty-dev/PercyStar, offs/rpf9-extract, TrinitronClient/GTA6-Asset-Info. The directory's other linked repos are untriaged.
+## C. Still unverified
+JamesCicada/GTAVI-Recomp, rpatty-dev/PercyStar, TrinitronClient/GTA6-Asset-Info; the directory's other links.
+
+New analysis docs: documentation/XBOX_TRANSLATION_COMPARISON.md, BCPACK_TEXTURE_RESEARCH.md, GPU_COMPATIBILITY_EVIDENCE.md, RESTRICTED_LICENCES.md, PROVENANCE.md.
