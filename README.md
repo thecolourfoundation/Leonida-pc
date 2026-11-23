@@ -1,15 +1,58 @@
-# GTA VI Cross-Platform Recompilation Research Workspace
-Assembles existing public projects as **unmodified upstream submodules**. No new engine code. Nothing here claims GTA VI runs anywhere.
-- Status: skeleton only. All upstream data is **UNVERIFIED**; nothing cloned yet (authoring sandbox could not resolve github.com).
-- Workflow: ./scripts/add-upstreams.sh <name> -> record-commits.sh -> static-scan.sh -> fill SECURITY_REVIEW.md -> only then build (isolated VM).
-- Rules: no game files, assets or keys; no DRM/anti-cheat circumvention; upstream stays pristine (changes go in integrations/ as documented patches).
+# Leonida-PC-Research
 
+Research workspace for the public goal **"Leonida PC"**: tracking, vetting and (later) integrating existing public Xbox-recompilation research toward a legitimate GTA VI PC implementation.
 
-## Status update 2026-11-23
-Five repos are reported remotely verified by the user's research team (second-hand): Leonida, ProjectReCity (derived from Leonida), Xbox2Windows, boykopovar/AnyPS5, awesome-gta6-reverse-engineering. **None cloned, built or tested locally.** See reports/VERIFICATION_STATUS.md, documentation/RELATIONSHIPS.md, documentation/CLONE_SEQUENCE.md.
+> **Status: tooling release candidate only.** No upstream project has been cloned, built or run here (GitHub was unreachable when this was prepared). **GTA VI does not boot, and nothing in this repository claims otherwise.** Upstream Leonida and ProjectReCity themselves document that the game does not boot.
 
-## Update 2026-11-23
-Licences, platform claims and requirements for Leonida, ProjectReCity, Xbox2Windows and AnyPS5 are recorded as remotely inspected documentation (second-hand; nothing cloned/built/tested here). Neither Leonida nor ReCity boots the game. Start with VERIFICATION_CHECKLIST.md, LICENSES.md, COMPATIBILITY.md, INVENTORY.md.
+## What this repository is
+| Part | Path | Origin |
+|---|---|---|
+| Upstream projects (submodule pointers only, currently none added) | `upstream/` | third-party, own licences |
+| Vetting / inventory / licence tooling, tests, CI | `scripts/`, `tests/`, `.github/`, `Makefile` | **original** (MIT, proposed) |
+| Research documentation, reports, test evidence | `documentation/`, `reports/`, root `*.md` | **original** |
+| Third-party licence/attribution register | `LICENSES.md`, `licenses/` | original summary of upstream terms |
 
-## Update 2026-11-23 (relay 3)
-Added OpenScarlett, xbox-emulator, SixNG, bcpack-rs, rpf9-explorer, rpf9, rpf9-extract and Percy6Stars (link-only, non-commercial) as remotely documented, unverified projects. New docs: documentation/XBOX_TRANSLATION_COMPARISON.md, BCPACK_TEXTURE_RESEARCH.md, GPU_COMPATIBILITY_EVIDENCE.md, RESTRICTED_LICENCES.md, PROVENANCE.md. Still nothing cloned, built or tested locally; no code copied.
+No upstream code is copied here. No game files, assets or keys are or will be included.
+
+## Architecture
+```mermaid
+flowchart LR
+  M[scripts/repos.txt manifest] --> A[add-upstreams.sh<br/>guards: verified / restricted]
+  A --> U[(upstream/ submodules)]
+  U --> S[static-scan.sh / list-vendored.sh / submodule-provenance.sh]
+  U --> L[check-licenses.sh + licence-compat.py]
+  S --> R[reports/]
+  L --> R
+  U --> B[record-build.sh -> BUILD_LOG.md]
+  T[tests/ + Makefile + CI] -.verifies.-> S
+  T -.verifies.-> L
+  T -.verifies.-> A
+```
+
+## Build / test (our tooling; Python 3 stdlib + bash + git + make)
+```
+make check      # lint, 13 Python tests, 37 shell tests, licence report check, submodule check, secret gate
+```
+Upstream build instructions are in BUILD_GUIDE.md and are **not yet executed**.
+
+## Platform matrix
+| Target | Status |
+|---|---|
+| Our tooling on Linux x86-64 (Ubuntu 24.04, Python 3.12.3, git 2.43, GNU make 4.3, bash) | **Tested** (`reports/test-runs/`) |
+| Our tooling on Windows / macOS / ARM64 | Untested |
+| Any upstream project (Leonida, ReCity, Xbox2Windows, AnyPS5, ...) | Untested; documented support only, see COMPATIBILITY.md |
+
+## Tested component matrix
+| Component | Tests | Result (2026-11-23) |
+|---|---|---|
+| scripts: add-upstreams, gen-inventory, static-scan, check-licenses, record-commits, record-build, submodule-provenance, list-vendored | tests/test_scripts.sh (37 checks, synthetic fixtures) | 37 pass |
+| licence-compat.py + manifest/licence data consistency | tests/test_licence_compat.py | pass |
+| stdlib-only dependency check, CI workflow hygiene | tests/test_stdlib_only.py, tests/test_workflows.py | pass |
+| CI workflows on GitHub runners | not executed (no GitHub access); the `make` targets they call were run locally | unverified on GitHub |
+| Upstream builds/tests, shader/CPU translation, runtime | not run | none |
+
+## Licences and attribution
+Original files: MIT (proposed; confirm before publishing, see `LICENSE`). Upstream licences as reported, unverified: Leonida and ProjectReCity GPL-3.0-or-later; Xbox2Windows MIT; AnyPS5 GPL-2.0-only (licence-isolated); others in LICENSES.md. Percy6Stars is non-commercial and link-only. See `licenses/THIRD_PARTY.md`.
+
+## Security and contributing
+See SECURITY.md and CONTRIBUTING.md. Release notes: RELEASE_NOTES.md. Publishing steps: documentation/PUBLISHING.md.

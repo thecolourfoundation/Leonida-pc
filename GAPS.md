@@ -27,3 +27,6 @@
 - Open: platforms/requirements/approach for OpenScarlett, xbox-emulator, SixNG and the rpf9 tools; Percy6Stars purpose and exact terms.
 - Blocked: no network, so no inspection was possible; no code copied; nothing built or tested.
 - Blocked (legal): Percy6Stars link-only; AnyPS5 isolated from GPL-3 projects (incl. SixNG).
+
+## Update (Leonida-PC-Research rc1)
+Blocked since no GitHub access: cloning Leonida (SHA, branch, submodules, LICENSE, build/test instructions), source inspection, any upstream build. Original contribution this round is tooling only (tests, CI, 3 fixed defects), not engine work.
