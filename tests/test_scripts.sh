@@ -53,6 +53,27 @@ R=$(ls "$W"/reports/scan-*.txt | head -1)
 ! grep -q 'input file is also the output' "$R"; ok $? "self-scan report has no grep self-read error"
 [ -z "$(awk '/^## secret-looking strings/{f=1;next} /^## /{f=0} f' "$R")" ]; ok $? "self-scan secrets section empty on a clean tree"
 
+echo "# doctor.sh / fetch-upstream.sh"
+fresh
+out=$(bash "$W/scripts/doctor.sh" 2>&1); rc=$?
+[ $rc -eq 0 ]; ok $? "doctor exits 0 when git/python3/make exist"
+echo "$out" | grep -q 'never provides' ; ok $? "doctor states game files are never provided"
+UPSTREAM_URL=https://example.com/x.git bash "$W/scripts/fetch-upstream.sh" >/dev/null 2>&1; rc=$?
+[ $rc -eq 2 ]; ok $? "fetch-upstream refuses non-github URL"
+SRC="$T/fake-upstream"; mkdir -p "$SRC"; git -C "$SRC" init -q; echo "GPL fake licence text" > "$SRC/LICENSE"; echo "build: do x" > "$SRC/README.md"
+printf '[submodule "s"]\n\tpath = s\n\turl = https://github.com/o/s.git\n' > "$SRC/.gitmodules"; git -C "$SRC" add -A
+git -C "$SRC" update-index --add --cacheinfo 160000,3333333333333333333333333333333333333333,s
+git -C "$SRC" -c user.email=t@t -c user.name=t commit -qm fake
+ALLOW_TEST_URL=1 UPSTREAM_URL="file://$SRC" bash "$W/scripts/fetch-upstream.sh" >"$T/fu.out" 2>&1; rc=$?
+[ $rc -eq 0 ]; ok $? "fetch-upstream succeeds against a synthetic local repo"
+I="$W/reports/upstream-identity.txt"
+grep -Eq '^sha: [0-9a-f]{40}$' "$I"; ok $? "identity records full SHA"
+grep -q '^s -> 3333333333333333333333333333333333333333' "$I"; ok $? "identity records submodule pin"
+grep -q 'GPL fake licence text' "$I"; ok $? "identity records LICENSE text"
+[ ! -e "$W/upstream/Leonida/LICENSE" ] && [ ! -e "$W/upstream/Leonida/README.md" ]; ok $? "nothing checked out"
+ALLOW_TEST_URL=1 UPSTREAM_URL="file://$SRC" bash "$W/scripts/fetch-upstream.sh" >/dev/null 2>&1; rc=$?
+[ $rc -eq 3 ]; ok $? "refuses to overwrite an existing clone"
+
 echo "# check-licenses.sh"
 fresh; mkdir -p "$W/upstream/no_lic" "$W/upstream/has_lic"; echo hi > "$W/upstream/no_lic/a"; echo MIT > "$W/upstream/has_lic/LICENSE"
 out=$(bash "$W/scripts/check-licenses.sh" 2>&1)

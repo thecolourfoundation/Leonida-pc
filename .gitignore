@@ -9,3 +9,4 @@ reports/scan-*.txt
 reports/vendored-*.txt
 reports/submodules-*.txt
 build/out/
+reports/upstream-identity.txt

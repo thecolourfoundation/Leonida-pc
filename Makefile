@@ -27,3 +27,10 @@ submodules:
 secrets:
 	@out=$$(bash scripts/static-scan.sh . | sed 's/^wrote //'); \
 	if awk '/^## secret-looking strings/{f=1;next} /^## /{f=0} f' "$$out" | grep -q .; then echo "secret-looking strings found in $$out"; exit 1; else echo "no secret-looking strings"; fi
+
+.PHONY: doctor fetch-upstream
+doctor:
+	@bash scripts/doctor.sh
+
+fetch-upstream:
+	@bash scripts/fetch-upstream.sh

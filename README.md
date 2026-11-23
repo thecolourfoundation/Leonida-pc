@@ -4,6 +4,17 @@ Research workspace for the public goal **"Leonida PC"**: tracking, vetting and (
 
 > **Status: tooling release candidate only.** No upstream project has been cloned, built or run here (GitHub was unreachable when this was prepared). **GTA VI does not boot, and nothing in this repository claims otherwise.** Upstream Leonida and ProjectReCity themselves document that the game does not boot.
 
+## Can I play GTA VI with this?
+**No, not today.** Upstream Leonida documents that the game does not boot, and this repo contains no launcher, no game files and no installer. Be wary of any "GTA VI PC" download, crack or repack: they are common malware lures. Never run one.
+
+## How to help (3 commands, any networked machine)
+```
+make doctor           # checks your tools and network
+make check            # runs this repo's 15 Python + 37+ shell tests
+make fetch-upstream   # hardened, no-checkout clone of Leonida + identity report (SHA, submodules, LICENSE)
+```
+Paste `reports/upstream-identity.txt` into an issue. Full contributor path: documentation/PUBLISHING.md, CLONE_SEQUENCE.md, VERIFICATION_CHECKLIST.md. Colab: tools/colab/leonida_bringup.ipynb (untested).
+
 ## What this repository is
 | Part | Path | Origin |
 |---|---|---|
