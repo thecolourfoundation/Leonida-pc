@@ -22,3 +22,9 @@ Basis: facts reported by the research team (see reports/VERIFICATION_STATUS.md).
 - **AnyPS5:** different target platform (PS5) and different purpose. Do not merge its capabilities into the Xbox/GTA VI matrix. Treat as a separate research track; any reusable ideas (loader, syscall layer) are *inferred* possibilities only.
 - **Asset tools:** separate category; they need game archives the project will not hold. Usable only as source to read/lint, not run against game data here.
 - **Directory:** a source of leads, not evidence. Each linked repo needs its own verification and triage before entering the manifest.
+
+## Update 2026-11-23: licence edges (reported)
+- Leonida (GPL-3.0-or-later) -> ProjectReCity (GPL-3.0-or-later): derivation; same licence; attribution and notices must be preserved.
+- Xbox2Windows (MIT): separate lineage; one-way compatible with GPL; keep separate with its own notice.
+- AnyPS5 (GPL-2.0-only): **licence-isolated** from the GPL-3 lineage; no shared code, linking or combined artifacts.
+- Directory-listed repos (xbox-emu, SixNG, Percy6Stars, rpf9, rpf9-explorer, bcpack-rs): relationships unknown.

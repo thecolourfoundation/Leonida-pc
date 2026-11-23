@@ -21,3 +21,9 @@ Nothing below has been executed. Use only the canonical github.com URLs in scrip
 
 ## Build/test order (after approval)
 Build each approved repo independently, in order 2, 4, 5, then others. Use `scripts/record-build.sh <repo> -- <cmd>`. Run upstream tests before any integration. Do not combine projects until each one's standalone behaviour is recorded. Tooling still to install in the build VM: cmake, clang (and Rust/Go/etc. as each README requires).
+
+## Update 2026-11-23
+- Licences are now reported (not verified); still read LICENSE text at step 3 of the clone procedure before checkout.
+- Build host: ~350 GB free for the full Leonida build; begin with the ~30 GB staged builds. Toolchains: see BUILD_GUIDE.md.
+- Keep AnyPS5 in its own build tree/artifacts (GPL-2.0-only isolation).
+- Directory-listed repos: remote verification first, then clone per the order table.

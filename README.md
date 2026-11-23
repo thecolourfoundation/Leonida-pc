@@ -7,3 +7,6 @@ Assembles existing public projects as **unmodified upstream submodules**. No new
 
 ## Status update 2026-11-23
 Five repos are reported remotely verified by the user's research team (second-hand): Leonida, ProjectReCity (derived from Leonida), Xbox2Windows, boykopovar/AnyPS5, awesome-gta6-reverse-engineering. **None cloned, built or tested locally.** See reports/VERIFICATION_STATUS.md, documentation/RELATIONSHIPS.md, documentation/CLONE_SEQUENCE.md.
+
+## Update 2026-11-23
+Licences, platform claims and requirements for Leonida, ProjectReCity, Xbox2Windows and AnyPS5 are recorded as remotely inspected documentation (second-hand; nothing cloned/built/tested here). Neither Leonida nor ReCity boots the game. Start with VERIFICATION_CHECKLIST.md, LICENSES.md, COMPATIBILITY.md, INVENTORY.md.
