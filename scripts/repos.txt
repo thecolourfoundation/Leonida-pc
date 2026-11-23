@@ -1,16 +1,19 @@
-# name|url|category   (UNVERIFIED until SECURITY_REVIEW.md signs off)
-Leonida|https://github.com/ItsNotRexed/Leonida|gta6-re
-ProjectReCity|https://github.com/pixl27/ProjectReCity|gta6-re
-Xbox2Windows|https://github.com/R0Y00/Xbox2Windows|xbox-recomp
-AnyPS5|https://github.com/boykopovar/AnyPS5|ps5-port
-awesome-gta6-reverse-engineering|https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering|directory
-xbox-emulator|https://github.com/omonkeyz/xbox-emulator|xbox-emu
-OpenScarlett|https://github.com/californiaAlmonds/OpenScarlett|xbox-emu
-ScarlettX|https://github.com/Freminet/ScarlettX|xbox-emu
-GTAVI-Recomp|https://github.com/JamesCicada/GTAVI-Recomp|gta6-recomp
-PercyStar|https://github.com/rpatty-dev/PercyStar|gta6-re
-Percy6Stars|https://github.com/Ahmet-Dedeler/Percy6Stars|gta6-re
-SixNG|https://github.com/holdmysocks/SixNG|gta6-re
-rpf9-extract|https://github.com/offs/rpf9-extract|assets
-rpf9|https://github.com/zeozeozeo/rpf9|assets
-GTA6-Asset-Info|https://github.com/TrinitronClient/GTA6-Asset-Info|assets
+# name|url|category|status
+# status: REMOTE-VERIFIED-BY-TEAM = page checked by user's research team (reported 2026-11-23); NOT cloned/built/tested locally.
+#         UNVERIFIED = on the assignment list only; do not clone until remotely verified.
+# categories: gta6-re | gta6-recomp | xbox-recomp | ps5-portability | gta6-assets | directory | xbox-emu
+Leonida|https://github.com/ItsNotRexed/Leonida|gta6-re|REMOTE-VERIFIED-BY-TEAM
+ProjectReCity|https://github.com/pixl27/ProjectReCity|gta6-re|REMOTE-VERIFIED-BY-TEAM
+Xbox2Windows|https://github.com/R0Y00/Xbox2Windows|xbox-recomp|REMOTE-VERIFIED-BY-TEAM
+AnyPS5|https://github.com/boykopovar/AnyPS5|ps5-portability|REMOTE-VERIFIED-BY-TEAM
+awesome-gta6-reverse-engineering|https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering|directory|REMOTE-VERIFIED-BY-TEAM
+xbox-emulator|https://github.com/omonkeyz/xbox-emulator|xbox-emu|UNVERIFIED
+OpenScarlett|https://github.com/californiaAlmonds/OpenScarlett|xbox-emu|UNVERIFIED
+ScarlettX|https://github.com/Freminet/ScarlettX|xbox-emu|UNVERIFIED
+GTAVI-Recomp|https://github.com/JamesCicada/GTAVI-Recomp|gta6-recomp|UNVERIFIED
+PercyStar|https://github.com/rpatty-dev/PercyStar|gta6-re|UNVERIFIED
+Percy6Stars|https://github.com/Ahmet-Dedeler/Percy6Stars|gta6-re|UNVERIFIED
+SixNG|https://github.com/holdmysocks/SixNG|gta6-re|UNVERIFIED
+rpf9-extract|https://github.com/offs/rpf9-extract|gta6-assets|UNVERIFIED
+rpf9|https://github.com/zeozeozeo/rpf9|gta6-assets|UNVERIFIED
+GTA6-Asset-Info|https://github.com/TrinitronClient/GTA6-Asset-Info|gta6-assets|UNVERIFIED
