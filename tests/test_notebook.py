@@ -31,5 +31,17 @@ class PublishNotebook(unittest.TestCase):
         self.assertIn('getpass', raw); self.assertIn('userdata', raw); self.assertIn('--dry-run', raw)
 
 
+
+class ShipItCell(unittest.TestCase):
+    def test_cell_parses_and_never_prints_token(self):
+        import ast
+        with open(os.path.join(ROOT, 'tools', 'colab', 'ship_it_cell.txt')) as fh:
+            src = fh.read()
+        ast.parse(src)
+        for bad in ('print(os.environ', 'ghp_', 'github_pat_', 'x-access-token', 'echo $GH_TOKEN'):
+            self.assertNotIn(bad, src)
+        self.assertIn("'--dry-run'", src); self.assertLess(src.index("'--dry-run'"), src.index("'--yes'"))
+
+
 if __name__ == '__main__':
     unittest.main()

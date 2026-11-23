@@ -1,0 +1,40 @@
+# ===== Leonida-PC: upload the zip -> verify -> publish to GitHub (ONE Colab cell) =====
+# Before running: Colab left bar -> key icon (Secrets) -> add GH_TOKEN, enable notebook access.
+#   Classic token with "repo" scope = script can create the repo. Fine-grained token = create an empty
+#   public repo named Leonida-PC in the GitHub web UI first (token needs Contents: read & write on it).
+OWNER = ""                 # empty = your own account, or an organisation you can create repos in
+PRIVATE = False
+REWRITE_IDENTITY = True    # swap the placeholder author for your GitHub no-reply identity
+
+import getpass, os, subprocess, sys, zipfile
+from google.colab import files
+
+up = files.upload()                                   # choose Leonida-PC.zip
+name = next(n for n in up if n.endswith('.zip'))
+z = zipfile.ZipFile(name)
+top = z.namelist()[0].split('/')[0]
+for i in z.infolist():
+    z.extract(i, '/content')
+    m = (i.external_attr >> 16) & 0o777
+    if m and not i.is_dir():
+        os.chmod('/content/' + i.filename, m)
+os.chdir('/content/' + top)
+
+try:
+    from google.colab import userdata
+    os.environ['GH_TOKEN'] = userdata.get('GH_TOKEN')
+except Exception:
+    os.environ['GH_TOKEN'] = getpass.getpass('GitHub token (hidden, not stored): ')
+
+def pub(*args):
+    extra = (['--owner', OWNER] if OWNER else []) + (['--private'] if PRIVATE else []) \
+        + (['--rewrite-identity'] if REWRITE_IDENTITY else [])
+    return subprocess.run([sys.executable, 'tools/publish/publish.py', *extra, *args]).returncode
+
+rc = pub('--dry-run')            # runs make check, checks token + repo, changes nothing
+if rc == 0:
+    rc = pub('--yes')            # creates the repo if needed, pushes main + tag v0.1.0-rc1
+else:
+    print('Dry run failed, so nothing was published. Read the message above.')
+del os.environ['GH_TOKEN']       # then delete/revoke the token at github.com/settings/tokens
+print('finished with exit code', rc)
